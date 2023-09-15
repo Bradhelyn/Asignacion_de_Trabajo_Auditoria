@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "sass": "^1.67.0"
+  },
+  "dependencies": {
+    "vuejs-datepicker": "^1.6.2"
+  }
+}
