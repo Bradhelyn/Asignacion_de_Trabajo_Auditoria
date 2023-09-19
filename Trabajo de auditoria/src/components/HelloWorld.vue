@@ -26,7 +26,7 @@
           <div class="input-container"
           v-for="(field, index) in formSteps[activeStep].fields"
           :key="'field'+index">
-            <input type="text" :class="{'wrong-input': !field.valid}" v-model="field.value" required>
+            <input :type="field.type" type="text" :class="{'wrong-input': !field.valid}" v-model="field.value" required>
             <label class="input-label">{{ field.label }}</label>
             
           </div>
@@ -43,48 +43,48 @@
 
 <script>
   export default {
-    data: () => {
-      return {
-        activeStep: 0,
-        animation: 'animate-in',
-        formSteps: [
-          {
-            title: "1.Información General",
-            fields: [
-              { label: "Titulo Auditoría", value: '', valid: true, pattern: /.+/ },
-              { label: "Num. Asignación", value: '', valid: true, pattern: /.+/ },
-              { label: "Área Auditada", value: '', valid: true, pattern: /.+/ },
-              { label: "Tipo de Auditoría", value: '', valid: true, pattern: /.+/ },
-              { label: "Dirección/Gerencia Auditoría", value: '', valid: true, pattern: /.+/ },
-              {  label: "Fecha Asignación", value: "", valid: true, pattern: /.+/ },
-              { label: "Auditor(a) a Cargo", value: '', valid: true, pattern: /.+/ },
-              { label: "Origen Auditoría", value: '', valid: true, pattern: /.+/ },
-              { label: "Gerente a Cargo", value: '', valid: true, pattern: /.+/ }
-              
-            ]
-          },
-          {
-            title: "2.Planificación",
-            fields: [
-              { label: "Inicio", value: '', valid: true, pattern: /.+/ },
-              { label: "Fin", value: '', valid: true, pattern: /.+/ },
-              { label: "Total Horas Presupuestadas", value: '', valid: true, pattern: /.+/ }
-            ]
-          },
-          {
-            title: "3.Recursos",
-            fields: [
-              { label: "Personal Asignado", value: '', valid: true, pattern: /.+/ },
-              { label: "Cargo", value: '', valid: true, pattern: /.+/ },
-              { label: "Horas/Hombre", value: '', valid: true, pattern: /.+/ }
-            ]
-          },
-          {
-            title: "Guardado exitosamente",
-          }
-        ],
-      }
-    },
+  data: () => {
+    return {
+      activeStep: 0,
+      animation: 'animate-in',
+      formSteps: [
+        {
+          title: "1.Información General",
+          fields: [
+            { type:"text", label: "Titulo Auditoría", value: '', valid: true, pattern: /.+/ },
+            { type:"text", label: "Num. Asignación", value: '', valid: true, pattern: /.+/ },
+            { type:"text", label: "Área Auditada", value: '', valid: true, pattern: /.+/ },
+            { type:"text", label: "Tipo de Auditoría", value: '', valid: true, pattern: /.+/ },
+            { type:"text", label: "Dirección/Gerencia Auditoría", value: '', valid: true, pattern: /.+/ },
+            { type:"date", label: "Fecha Asignación", value: "", valid: true, pattern: /.+/ },
+            { type:"text", label: "Auditor(a) a Cargo", value: '', valid: true, pattern: /.+/ },
+            { type:"text", label: "Origen Auditoría", value: '', valid: true, pattern: /.+/ },
+            { type:"text", label: "Gerente a Cargo", value: '', valid: true, pattern: /.+/ }
+
+          ]
+        },
+        {
+          title: "2.Planificación",
+          fields: [
+            { type:"date", label: "Inicio", value: '', valid: true, pattern: /.+/ },
+            { type:"date", label: "Fin", value: '', valid: true, pattern: /.+/ },
+            { type:"text", label: "Total Horas Presupuestadas", value: '', valid: true, pattern: /.+/ }
+          ]
+        },
+        {
+          title: "3.Recursos",
+          fields: [
+            { type:"text", label: "Personal Asignado", value: '', valid: true, pattern: /.+/ },
+            { type:"text", label: "Cargo", value: '', valid: true, pattern: /.+/ },
+            { type:"text", label: "Horas/Hombre", value: '', valid: true, pattern: /.+/ }
+          ]
+        },
+        {
+          title: "Guardado exitosamente",
+        }
+      ],
+    }
+  },
     methods: {
       nextStep() {
         this.animation = 'animate-out';
